@@ -8,6 +8,8 @@ class Sentences {
 
     public Sentences() { }
     public Sentences(String wordSt) {
+        Separator sep = new Separator();
+        System.out.println(sep.isSeparator(wordSt));
         this.wordSt = wordSt;
         String[] words = wordSt.split(" ");
         Word wrd = new Word();
@@ -123,6 +125,22 @@ class Word {
             sb.append(c);
         }
         System.out.println(sb.toString());
+    }
+}
+
+class Separator {
+    private final static StringBuilder SEPATORS = new StringBuilder(",. \\t!\\\";:'-");
+    public boolean isSeparator(String stroke) {
+        char ch=',';
+        for(int j=0; j<stroke.length(); j++) {
+            ch = stroke.charAt(j);
+            for (int i = 0; i < SEPATORS.length(); i++) {
+                if (SEPATORS.charAt(i) == ch) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
 
