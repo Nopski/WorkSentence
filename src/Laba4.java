@@ -129,15 +129,11 @@ class Word {
 }
 
 class Separator {
-    private final static StringBuilder SEPATORS = new StringBuilder(",. \\t!\\\";:'-");
+    private final static String SEPARATORS = new String(",. \\t!\\\";:'-");
     public boolean isSeparator(String stroke) {
-        char ch=',';
-        for(int j=0; j<stroke.length(); j++) {
-            ch = stroke.charAt(j);
-            for (int i = 0; i < SEPATORS.length(); i++) {
-                if (SEPATORS.charAt(i) == ch) {
-                    return true;
-                }
+        for( int i=0; i < stroke.length(); i++ ) {
+            if(SEPARATORS.indexOf(stroke.charAt(i)) >= 0) {
+                return true;
             }
         }
         return false;
